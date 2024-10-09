@@ -1,0 +1,1 @@
+<?php header('Status: 301 Moved Permanently', true, 301); header('Location: ../index.php'); ?>
