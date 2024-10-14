@@ -65,7 +65,7 @@ include_once "includes/header.php";
                 <div class="card-icon">
                     <i class="fas fa-cash-register fa-2x"></i>
                 </div>
-                <a  class="card-category text-info font-weight-bold">
+                <a href="lista_ventas.php"  class="card-category text-info font-weight-bold">
                     Ventas del dia
                 </a>
                 <h3 class="card-title"><?php echo $total['ventas']; ?></h3>

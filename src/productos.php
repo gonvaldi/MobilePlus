@@ -16,6 +16,8 @@ if (!empty($_POST)) {
     $producto = $_POST['producto_name'];
     $precio = $_POST['precio'];
     $precio_venta = $_POST['precio_venta'];
+    $IMEI = $_POST['IMEI'];
+    $IMEI2 = $_POST['IMEI2'];
     $cantidad = $_POST['cantidad'];
     $tipo = $_POST['tipo'];
     $presentacion = $_POST['presentacion'];
@@ -64,7 +66,7 @@ if (!empty($_POST)) {
             }
 
 
-            $query_insert = mysqli_query($conexion, "INSERT INTO producto(codigo,descripcion,precio,existencia,id_lab,id_presentacion,id_tipo, vencimiento, lote, costo,fecha_registro,cantidad_registro,codigo_producto,estante,minima,detalle) values ('$codigo', '$producto', '$precio_venta', '$cantidad', $laboratorio, $presentacion, $tipo, '$vencimiento', '$lote', '$precio', '$fecha_registro', '$cantidad', '$codigo_producto','$estante','$minima','$detalle')");
+            $query_insert = mysqli_query($conexion, "INSERT INTO producto(codigo,descripcion,precio,IMEI,IMEI2,existencia,id_lab,id_presentacion,id_tipo, vencimiento, lote, costo,fecha_registro,cantidad_registro,codigo_producto,estante,minima,detalle) values ('$codigo', '$producto', '$precio_venta', '$cantidad', $laboratorio, $presentacion, $tipo, '$vencimiento', '$lote', '$precio', '$fecha_registro', '$cantidad', '$codigo_producto','$estante','$minima','$detalle')");
                 if ($query_insert) {
                     $alert = '<div class="alert alert-success alert-dismissible fade show" role="alert">
                         Producto registrado
@@ -101,7 +103,7 @@ if (!empty($_POST)) {
            // $query_update1 = mysqli_query($conexion, "UPDATE producto SET codigo = '$codigo', descripcion = '$producto', id_tipo= $tipo, id_presentacion= $presentacion, id_lab= $laboratorio,codigo_producto= '$codigo_producto',minima= '$minima', precio = '$precio_venta' WHERE descripcion = '$name_producto' and id_lab = $name_lab and id_tipo = $name_tipo ");
 
 
-            $query_update = mysqli_query($conexion, "UPDATE producto SET codigo = '$codigo', descripcion = '$producto', id_tipo= $tipo, id_presentacion= $presentacion, id_lab= $laboratorio, precio= $precio_venta, existencia = $cantidad, vencimiento = '$vencimiento' , lote = '$lote' ,fecha_registro= '$fecha_registro',codigo_producto= '$codigo_producto',costo= '$precio',estante= '$estante',minima= '$minima',detalle= '$detalle' WHERE codproducto = $id");
+            $query_update = mysqli_query($conexion, "UPDATE producto SET codigo = '$codigo', descripcion = '$producto', id_tipo= $tipo, id_presentacion= $presentacion, id_lab= $laboratorio, precio= $precio_venta, IMEI= $IMEI, IMEI2 = $IMEI2 existencia = $cantidad, vencimiento = '$vencimiento' , lote = '$lote' ,fecha_registro= '$fecha_registro',codigo_producto= '$codigo_producto',costo= '$precio',estante= '$estante',minima= '$minima',detalle= '$detalle' WHERE codproducto = $id");
 
             if ($query_update) {
                 $alert = '<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -131,7 +133,7 @@ include_once "includes/header.php";
                     <div class="card-header bg-primary text-white">
                         Productos
                     </div>
-                    <div class="card-body" id="fondo_registro" style="background-color: white">
+                    <div class="card-body" id="fondo_registro" style="background-color: white; text-align:center">
 
                         <?php echo isset($alert) ? $alert : ''; ?>
                         <form action="" method="post" autocomplete="off" id="formulario">
@@ -150,7 +152,7 @@ include_once "includes/header.php";
                                     </div>
                                 </div>
 
-                                <div class="col-md-2">
+                                <div class="col-md-4">
                                     <div class="form-group" style="background-color: #d9edf7">
                                         <label for="codigo"  style="font-size: large" class=" text-dark font-weight-bold"> S/N Modelo</label>
                                         <input type="text" placeholder="Ingrese S/N modelo" name="codigo_producto" id="codigo_producto" class="form-control">
@@ -158,7 +160,7 @@ include_once "includes/header.php";
                                     </div>
                                 </div>
 
-                                <div class="col-md-7">
+                                <div class="col-md-5">
                                     <div class="form-group" style="background-color: #a9d7fb">
                                         <label for="producto"  style="font-size: large" class=" text-dark font-weight-bold">Modelo</label>
                                         <input type="text" placeholder="Ingrese nombre del producto" name="producto_name" id="producto_name" class="form-control">
@@ -195,13 +197,27 @@ Sistema Operativo:
                                     </div>
                                 </div>
 
+                                <div class="col-md-1">
+                                    <div class="form-group">
+                                        <label for="precio" class=" text-dark font-weight-bold">IMEI 1</label>
+                                        <input type="text" placeholder="Ingrese IMEI" class="form-control" name="IMEI" id="IMEI">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-1">
+                                    <div class="form-group">
+                                        <label for="precio_venta" class=" text-dark font-weight-bold">IMEI 2</label>
+                                        <input type="text" placeholder="Ingrese IMEI" class="form-control" name="IMEI2" id="IMEI2">
+                                    </div>
+                                </div>
+
                                 <div class="col-md-2" style="display: none">
                                     <div class="form-group">
                                         <label for="cantidad" class=" text-dark font-weight-bold">Stock</label>
                                         <input type="number" value="1" required placeholder="Ingrese cantidad" class="form-control" name="cantidad" id="cantidad">
                                     </div>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-1">
                                     <div class="form-group">
                                         <label for="tipo">Tipo</label>
 
