@@ -38,7 +38,7 @@ $pdf->Cell(130, 5, "Datos del cliente", 1, 1, 'C', 1);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->Cell(30, 5, utf8_decode('Nombre'), 0, 0, 'L');
 $pdf->Cell(20, 5, utf8_decode('Teléfono'), 0, 0, 'L');
-$pdf->Cell(20, 5, utf8_decode('Dirección'), 0, 1, 'L');
+$pdf->Cell(20, 5, utf8_decode('Nº C.I.'), 0, 1, 'L');
 $pdf->SetFont('Arial', '', 7);
 $pdf->Cell(30, 5, utf8_decode($datosC['nombre']), 0, 0, 'L');
 $pdf->Cell(20, 5, utf8_decode($datosC['telefono']), 0, 0, 'L');

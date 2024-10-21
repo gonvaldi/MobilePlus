@@ -39,7 +39,7 @@ if (!empty($_POST)) {
     if (!empty($_POST['accion'])) {
         $vencimiento = $_POST['vencimiento'];
     }
-    if ( empty($producto) || empty($tipo) || empty($presentacion) || empty($laboratorio)  || empty($precio) || $precio <  0 ||  $cantidad <  -1) {
+    if ( empty($producto) || empty($tipo) || empty($presentacion) || empty($laboratorio)  || empty($precio) || $precio <  0 ||  $cantidad <  -1 | empty($IMEI) ) {
         $alert = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
                         Todo los campos son obligatorios
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -66,7 +66,7 @@ if (!empty($_POST)) {
             }
 
 
-            $query_insert = mysqli_query($conexion, "INSERT INTO producto(codigo,descripcion,precio,IMEI,IMEI2,existencia,id_lab,id_presentacion,id_tipo, vencimiento, lote, costo,fecha_registro,cantidad_registro,codigo_producto,estante,minima,detalle) values ('$codigo', '$producto', '$precio_venta', '$cantidad', $laboratorio, $presentacion, $tipo, '$vencimiento', '$lote', '$precio', '$fecha_registro', '$cantidad', '$codigo_producto','$estante','$minima','$detalle')");
+            $query_insert = mysqli_query($conexion, "INSERT INTO producto(codigo,descripcion,precio,IMEI, IMEI2,existencia,id_lab,id_presentacion,id_tipo, vencimiento, lote, costo,fecha_registro,cantidad_registro,codigo_producto,estante,minima,detalle) values ('$codigo', '$producto', '$precio_venta', '$IMEI', '$IMEI2', '$cantidad', $laboratorio, $presentacion, $tipo, '$vencimiento', '$lote', '$precio', '$fecha_registro', '$cantidad', '$codigo_producto','$estante','$minima','$detalle')");
                 if ($query_insert) {
                     $alert = '<div class="alert alert-success alert-dismissible fade show" role="alert">
                         Producto registrado
@@ -211,18 +211,16 @@ Sistema Operativo:
                                     </div>
                                 </div>
 
-                                <div class="col-md-2" style="display: none">
+                                <div class="col-md-1" style="display: none">
                                     <div class="form-group">
                                         <label for="cantidad" class=" text-dark font-weight-bold">Stock</label>
                                         <input type="number" value="1" required placeholder="Ingrese cantidad" class="form-control" name="cantidad" id="cantidad">
                                     </div>
                                 </div>
-                                <div class="col-md-1">
+
+                                <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="tipo">Tipo</label>
-
-                                        <input type="text" placeholder="Tipo" name="tipo_name" id="tipo_name" class="form-control">
-
+                                        <label for="tipo" class=" text-dark font-weight-bold">TIPO</label>
                                         <select readonly="" id="tipo" class="form-control" name="tipo" required>
                                             <?php
                                             $query_tipo = mysqli_query($conexion, "SELECT * FROM tipos WHERE estado = 0");
@@ -234,12 +232,9 @@ Sistema Operativo:
 
                                     </div>
                                 </div>
-                                <div  class="col-md-2">
+                                <div  class="col-md-1">
                                     <div class="form-group">
-                                        <label for="presentacion">Tamaño</label>
-
-                                        <input type="text" placeholder="Tamaño" name="presentacion_name" id="presentacion_name" class="form-control">
-
+                                        <label for="presentacion" class="text-dark font-weight-bold">TAMAÑO</label>
 
                                         <select readonly="" id="presentacion" class="form-control" name="presentacion" >
                                             <?php
@@ -252,11 +247,7 @@ Sistema Operativo:
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="laboratorio">Marca</label>
-
-                                        <input type="text" placeholder="Marca" name="laboratorio_name" id="laboratorio_name" class="form-control">
-
-
+                                        <label for="laboratorio" class="text-dark font-weight-bold">MARCA</label>
                                         <select readonly="" id="laboratorio" class="form-control" name="laboratorio" required>
                                             <?php
                                             $query_lab = mysqli_query($conexion, "SELECT * FROM laboratorios WHERE estado =0");
