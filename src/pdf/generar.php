@@ -90,50 +90,50 @@ $pdf->Cell(190, 5, number_format($total, 2, '.', ','), 0, 1, 'R');
 
 $pdf->Ln();
 $pdf->SetFont('Arial', 'B', 15);
-$pdf->Cell(200, 5, "TERMINOS DE LA GARANTIA", 0, 1, 'C');
+$pdf->Cell(200, 5, "TERMINOS DE GARANTIA", 0, 1, 'C');
 $pdf->Ln();
 $pdf->SetFont('Arial', '', 9);
-$pdf->multicell(190, 5, utf8_decode('Esta Garantía cubre el normal funcionamiento del hardware del equipo (parte física) y no cubre el software instalado. Siendo esta responsabilidad del comprador.
-En caso de falla del software instalado. La tienda se compromete a reparar el mismo sin cargo alguno para el comprador cuando el mismo fallare en situaciones normales de uso y bajo las condiciones que a continuación se detalla:
-a)	Son beneficiarios del mismo comprador original dentro del plazo mencionado
-b)	Sera causa de anulación de esta garantía la intervención del equipo por personas ajenas a la empresa
-c)	 Para ser efectiva la GARANTIA, el consumidor presentara este certificado, de garantía
-d)	La garantía carecerá de validez si se observan tachaduras o enmiendas en los datos de certificado, o la perdida de la misma'));
+$pdf->multicell(190, 5, utf8_decode('Esta garantía cubre defectos de fabricación en el hardware del smartphone y no cubre problemas relacionados con el software o aplicaciones de terceros. La garantía es válida únicamente para el comprador original y bajo las siguientes condiciones:
+
+a) La garantía cubre fallos en el hardware durante el periodo establecido, siempre que el uso haya sido normal y adecuado.
+b) La intervención del smartphone por técnicos no autorizados o la manipulación del software anulará esta garantía.
+c) Para hacer efectiva la GARANTÍA, el comprador deberá presentar este certificado junto con la factura de compra.
+d) La garantía será inválida si se observan tachaduras o modificaciones en los datos del certificado, o en caso de pérdida del mismo.
+'));
 $pdf->SetFont('Arial', 'B', 9);
-$pdf->Cell(200, 5, "           NO ESTAN CUBIERTOS POR ESTA GARANTIA", 0, 1, 'L');
+$pdf->Cell(200, 5, "EXCLUSIONES DE ESTA GARANTÍA", 0, 1, 'L');
 $pdf->SetFont('Arial', '', 9);
-$pdf->multicell(190, 5, utf8_decode('            I) Los daños ocasionados al exterior del equipo.
-            II) Las roturas, golpes, caídas o rayaduras causadas por traslados. 
-            III) Los daños o fallas ocasionadas por deficiencias o interrupciones no autorizadas.
-            IV) Todos accesorios externos al equipo de computación (teclado, mouse, parlante y etc.)
-e)	La tienda no asume la responsabilidad alguna por los daños personales o la propiedad que pudiera causar la mala instalación o falla de mantenimiento.
-f)	Toda manipulación extra por parte de personas ajenas a la tienda ocasionara la perdida de la garantía dentro del plazo mencionado
-g)	Una vez la garantía   haya expirado o anulado, si el comprador deseara alguna intervención técnica del equipo tendrá que hacer un abono de acuerdo a lo solicitado.
- '));
+$pdf->multicell(190, 5, utf8_decode('I) Daños causados por caídas, golpes, o exposición a líquidos.
+II) Daños externos al dispositivo, como rayaduras, abolladuras o pantallas rotas.
+III) Fallos derivados del uso indebido, sobrecarga eléctrica, o exposición a condiciones extremas.
+IV) Cualquier daño causado por software de terceros, modificaciones del sistema operativo, o uso no autorizado del dispositivo.
+e) La tienda no se responsabiliza por daños a la propiedad o lesiones personales derivadas del uso incorrecto del smartphone.
+f) El uso de accesorios no originales o la manipulación del dispositivo por personal no autorizado invalidará la garantía.
+g) Una vez que la garantía haya expirado o se haya anulado, cualquier reparación estará sujeta a tarifas de servicio de acuerdo a lo solicitado.
+'));
+
 $pdf->SetFont('Arial', 'B', 9);
-$pdf->Cell(200, 5, "        UNA VEZ RETIRADA LA MERCADERIA NO ACEPTA CAMBIOS NI DEVOLUCIONES", 0, 1, 'L');
+$pdf->Cell(200, 5, "NO SE ACEPTAN CAMBIOS NI DEVOLUCIONES UNA VEZ RETIRADO EL SMARTPHONE", 0, 1, 'L');
 $pdf->Ln();
 $pdf->Ln();
 $pdf->Ln();
+
 $pdf->SetFont('Arial', 'B', 15);
 $pdf->Cell(100, 5, "____________", 0, 0, 'C');
 $pdf->Cell(100, 5, "____________", 0, 0, 'C');
 $pdf->Ln();
 $pdf->SetFont('Arial', '', 12);
-$pdf->Cell(100, 5, "Firma de laTienda", 0, 0, 'C');
-$pdf->Cell(100, 5, "Firma del cliente ", 0, 0, 'C');
+$pdf->Cell(100, 5, "Firma de la Tienda", 0, 0, 'C');
+$pdf->Cell(100, 5, "Firma del Cliente", 0, 0, 'C');
 $pdf->Ln();
 $pdf->Ln();
 $pdf->Ln();
 $pdf->SetFont('Arial', '', 10);
 
-$pdf->Cell(200, 5,"Fecha y hora :".$fechas, 0, 0, 'C');
+$pdf->Cell(200, 5, "Fecha y hora: " . $fechas, 0, 0, 'C');
 $pdf->Ln();
 $pdf->SetFont('Arial', 'B', 9);
-$pdf->Cell(200, 5,"!Gracias por su compra!", 0, 0, 'C');
-
-
+$pdf->Cell(200, 5, "!Gracias por su compra!", 0, 0, 'C');
 
 $pdf->Output("ventas.pdf", "I");
-
 ?>
